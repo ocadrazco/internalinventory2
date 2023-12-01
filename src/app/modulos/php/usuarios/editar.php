@@ -6,12 +6,13 @@ $json = file_get_contents('php://input');
 
 
 $params = json_decode($json);
+$id =$_GET['id'];
 
 require("../conexion.php");
 
-$editar = "UPDATE usuarios SET nombre='osna', usuario='hola', clave=sha1 ('clave'), tipo='la verga' WHERE id_usuarios=4";
+//$editar = "UPDATE usuarios SET nombre='osna', usuario='hola', clave=sha1 ('clave'), tipo='la verga' WHERE id_usuarios=4";
 
-$editar = "UPDATE usuarios SET nombre='$params->nombre', usuario='$params->usuario', clave=sha1 ('$params->clave'), tipo='$params->tipo' WHERE id_usuario=$params->id_usuarios";
+$editar = "UPDATE usuarios SET nombre='$params->nombre', usuario='$params->usuario', clave=sha1 ('$params->clave'), tipo='$params->tipo' WHERE id_usuarios=$id";
 
 mysqli_query($conexion, $editar) or die('no edito');
 
