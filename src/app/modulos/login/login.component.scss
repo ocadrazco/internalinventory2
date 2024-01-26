@@ -1,0 +1,22 @@
+#fondo{
+
+    background-image: url(../../../assets/img/login.jpg);
+    background-size: 100%;
+    height: 100vh;
+    padding: top 150px; ;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+}
+
+
+#form{
+    width: 300px;
+    text-align:center;
+}
+
+input,span{
+    margin-top: 0%;
+    margin-bottom: 1%;
+}

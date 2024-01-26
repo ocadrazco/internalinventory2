@@ -4,8 +4,9 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 
 require ("../conexion.php");
 
-$con = "SELECT * from activos ORDER BY id_activos";
-$res=mysqli_query($conexion,$con) or die ('no consulto activos');
+$con = "SELECT * FROM tipo ORDER BY nombre";
+$res=mysqli_query($conexion,$con) or die ('no consulto tipo ');
+
 
 
 $vec=[];

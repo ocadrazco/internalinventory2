@@ -11,7 +11,7 @@ import { PrincipalComponent } from './modulos/principal.component';
 import { DashboardComponent } from './modulos/dashboard/dashboard.component';
 import { LoginComponent } from './modulos/login/login.component';
 import { UsuariosComponent } from './modulos/usuarios/usuarios.component';
-import { ActivosComponent } from './modulos/activos/activos.component';
+import { activosComponent } from './modulos/activos/activos.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { ActivosComponent } from './modulos/activos/activos.component';
     DashboardComponent,
     LoginComponent,
     UsuariosComponent,
-    ActivosComponent
+    activosComponent
   ],
   imports: [
     BrowserModule,

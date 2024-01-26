@@ -1,1 +1,123 @@
-<p>activos works!</p>
+<h1>ACTIVOS</h1>
+<button class="btn btn-primary" (click)="mostrar(1)">Insertar activo</button><br><br>
+
+<div id="formulario" *ngIf="verf==true">
+    <div class="row">
+        <div class="col-lg-4">
+            <input type="number" id="n_id_activo" class="form-control" [(ngModel)]="activ.n_id_activo" placeholder="N id del Activo"><br>
+            <span style="color:red;" *ngIf="validn_id_activo==false">Insertar N id activo </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <input type="text" id="n_serie" class="form-control" [(ngModel)]="activ.n_serie" placeholder=" N serie "><br>
+            <span style="color:red;" *ngIf="validn_serie==false">Insertar serie del activo </span>
+        </div>
+        <div class="col-lg-4">
+            <input type="text" id="observaciones" class="form-control" [(ngModel)]="activ.observaciones"placeholder=" Observaciones "><br>
+            <span style="color:red;" *ngIf="validobservaciones==false">Insertar las observaciones  </span>
+        </div>
+        <div class="col-lg-4">
+            <input type="number" id="costo" class="form-control" [(ngModel)]="activ.costo"placeholder=" Costo del activo "><br>
+            <span style="color:red;" *ngIf="validcosto==false">Insertar el costo del activo </span>
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <input type="number" id="cc_responsable" class="form-control" [(ngModel)]="activ.cc_responsable"placeholder=" cc del empleado  "><br>
+            <span style="color:red;" *ngIf="validcc_responsable==false">Insertar cc del empleado  </span>
+        </div>
+        <div class="col-lg-4">
+            <input type="fecha_de_compra" id="costo" class="form-control" [(ngModel)]="activ.fecha_de_compra"placeholder=" Feha de compra del activo "><br>
+            <span style="color:red;" *ngIf="validfecha_de_compra==false">Insertar fecha de compra del activo </span>
+        </div>
+        <div class="col-lg-4">
+            <input type="fecha_de_entrega" id="costo" class="form-control" [(ngModel)]="activ.fecha_de_entrega"placeholder=" Fecha de entrega del activo  "><br>
+            <span style="color:red;" *ngIf="validfecha_de_entrega==false">Insertar fecha de entrega del activo </span>
+        </div>
+
+           <select id="fo_marca"  class="form-control form-select" [(ngModel)]="activ.fo_marca">
+           <option value="0" label="Seleccion marca">Seleccion Marca </option>
+           <option *ngFor="let itemm of marca" value="{{itemm.id_marca}}" label="{{itemm.nombre}}">{{itemm.nombre}}</option>
+        </select>
+        <select id="fo_tipo"  class="form-control form-select" [(ngModel)]="activ.fo_tipo">
+            <option value="0" label="Seleccion tipo">Seleccion Tipo </option>
+            <option *ngFor="let itemt of tipo" value="{{itemt.id_tipo}}" label="{{itemt.nombre}}">{{itemt.nombre}}</option>
+         </select>
+         <select id="fo_ciudad"  class="form-control form-select" [(ngModel)]="activ.fo_ciudad">
+            <option value="0" label="Seleccion Ciudad">Seleccion Ciudad </option>
+            <option *ngFor="let itemc of ciudad" value="{{itemc.id_ciudad}}" label="{{itemc.nombre}}">{{itemc.nombre}}</option>
+         </select>
+         <select id="fo_modelo"  class="form-control form-select" [(ngModel)]="activ.fo_modelo">
+            <option value="0" label="Seleccion modelo">Seleccion modelo </option>
+            <option *ngFor="let itemo of modelo" value="{{itemo.id_modelo}}" label="{{itemo.nombre}}">{{itemo.nombre}}</option>
+         </select>
+         <select id="fo_empleados"  class="form-control form-select" [(ngModel)]="activ.fo_empleados">
+            <option value="0" label="Seleccion empleados">Seleccion empleados</option>
+            <option *ngFor="let iteme of empleados" value="{{iteme.id_empleados}}" label="{{iteme.nombres}}">{{iteme.nombre}}</option>
+         </select>
+         <select id="fo_departamento"  class="form-control form-select" [(ngModel)]="activ.fo_departamento">
+            <option value="0" label="Seleccion departamento">Seleccion departamento</option>
+            <option *ngFor="let itemd of departamento" value="{{itemd.id_departamento}}" label="{{itemd.nombres}}">{{itemd.nombre}}</option>
+         </select>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-3">
+             <button *ngIf="beditar==false" class="btn btn-primary"(click)="ingresar()">Guardar</button> 
+             <!-- <button *ngIf="beditar==true" class="btn btn-primary" (click)="editar()">Editar</button> -->
+        </div> 
+        <div class="col-lg-3">
+            <button class="btn btn-secondary" (click)="mostrar(0)">Cancelar</button>
+        </div>
+        <div class="col-lg-3"></div>
+    </div> 
+</div>
+
+<br>
+<div class="table-responsive">
+    <table class="table table-succes table-striped" border="2">
+    <tr>
+        <th>N id activo</th>
+        <th>Marca</th>
+        <th>Tipo</th>
+        <th>Ciudad</th>
+        <th>N serie</th>
+        <th>Modelo</th>
+        <th>Observaciones</th>
+        <th>Costo</th>
+        <th>Empleados</th>
+        <th>Departamento</th>
+        <th>CC responsable</th>
+        <th>Fecha de compra</th>
+        <th>Fecha de entrega</th>
+    </tr>
+    <!-- mostrar los usuarios  -->
+     <tr *ngFor="let item of activos">
+        <td>{{item.n_id_activo}}</td>
+        <td>{{item.nmarca}}</td>
+        <td>{{item.ntipo}}</td>
+        <td>{{item.nciudad}}</td>
+        <td>{{item.n_serie}}</td>
+        <td>{{item.nmodelo}}</td>
+        <td>{{item.observaciones}}</td>
+        <td>{{item.costo}}</td>
+        <td>{{item.nempleados}}</td>
+        <td>{{item.ndepartamento}}</td>
+        <td>{{item.cc_responsable}}</td>
+        <td>{{item.fecha_de_compra}}</td>
+        <td>{{item.fecha_de_entrega}}</td>
+        <td>
+            <a>
+                <span class="fas fa-edit editar" title="Editar" ></span>
+            </a>
+            
+            <a> 
+            <span class="fas fa-trash-alt eliminar" title="Eliminar" ></span>
+        </a>
+        </td>
+    </tr>
+    </table>
+  </div> 
